@@ -4,7 +4,7 @@ import ni.edu.uam.practicanavegacionentrepginas.modelo.Docente
 import ni.edu.uam.practicanavegacionentrepginas.modelo.Estudiante
 
 class clase (private var nombre: String,private var apellido: String, private var docentes: Docente){
-    private var estudiantes: MutableList<Estudiante> = mutableListOf()
+    private var estudiantes = mutableListOf<Estudiante>()
     fun getNombre(): String {
         return nombre
     }
@@ -14,7 +14,7 @@ class clase (private var nombre: String,private var apellido: String, private va
     fun getDocentes(): Docente {
         return docentes
     }
-    fun getEstudiantes(): List<Estudiante> {
+    fun getEstudiantes(): MutableList<Estudiante> {
         return estudiantes
     }
     fun agregarEstudiante(estudiante: Estudiante) {
@@ -22,5 +22,9 @@ class clase (private var nombre: String,private var apellido: String, private va
     }
     fun eliminarEstudiante(estudiante: Estudiante) {
         estudiantes.remove(estudiante)
+    }
+
+    fun conteoEstudiantes(): Int {
+        return estudiantes.size
     }
 }

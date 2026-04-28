@@ -16,14 +16,11 @@ import ni.edu.uam.practicanavegacionentrepginas.pantallas.Ver
 fun AppNavegacion() {
     val navController = rememberNavController()
 
-    // Estado compartido: la instancia de 'clase' (puede ser null hasta crear profesor)
     val claseState = remember { mutableStateOf<clase?>(null) }
-    // Version para forzar recomposición cuando cambia la lista interna
     val version = remember { mutableStateOf(0) }
 
     fun crearClaseConDocente(docente: Docente) {
-        // aquí usamos el nombre/apellido del docente para inicializar la clase
-        claseState.value = ni.edu.uam.practicanavegacionentrepginas.logica.clase(
+        claseState.value = clase(
             docente.getNombre(),
             docente.getApellido(),
             docente
@@ -60,17 +57,16 @@ fun AppNavegacion() {
             )
         }
         composable("ver") {
-            // pasamos la referencia y la versión para que la pantalla se recomporte al cambiar
             Ver(
                 claseActual = claseState.value,
-                version = version.value,
                 onAgregar = { navController.navigate("agregar") },
-                onEliminar = { navController.navigate("eliminar") }
+                onEliminarNav = { navController.navigate("eliminar") }
             )
         }
         composable("eliminar") {
             Eliminar(
                 claseActual = claseState.value,
+                version = version.value,
                 onEliminar = { estudiante ->
                     eliminarEstudiante(estudiante)
                 },
@@ -79,3 +75,4 @@ fun AppNavegacion() {
         }
     }
 }
+

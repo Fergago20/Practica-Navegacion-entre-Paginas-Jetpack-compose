@@ -16,6 +16,7 @@ import ni.edu.uam.practicanavegacionentrepginas.modelo.Estudiante
 @Composable
 fun Eliminar(
     claseActual: clase?,
+    version: Int,
     onEliminar: (Estudiante) -> Unit,
     onDone: () -> Unit
 ) {
@@ -23,6 +24,8 @@ fun Eliminar(
         Column(modifier = Modifier.padding(16.dp)) {
             Text("Eliminar Estudiantes", style = MaterialTheme.typography.titleLarge, color = MaterialTheme.colorScheme.primary)
             Spacer(modifier = Modifier.height(12.dp))
+            Text("Vista actualizada: $version", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurface)
+            Spacer(modifier = Modifier.height(8.dp))
 
             if (claseActual == null) {
                 Text("No hay profesor / clase creada.", style = MaterialTheme.typography.bodyLarge)
@@ -31,13 +34,16 @@ fun Eliminar(
                 return@Column
             }
 
-            val lista = claseActual.getEstudiantes()
+            var lista : MutableList<Estudiante> = claseActual.getEstudiantes()
             if (lista.isEmpty()) {
                 Text("No hay estudiantes para eliminar.", style = MaterialTheme.typography.bodyLarge)
                 Spacer(modifier = Modifier.height(8.dp))
                 Button(onClick = onDone) { Text("Volver") }
                 return@Column
             }
+
+            Text("Pulsa la basura para eliminar y refrescar al instante.", style = MaterialTheme.typography.bodyMedium)
+            Spacer(modifier = Modifier.height(8.dp))
 
             LazyColumn(modifier = Modifier.fillMaxWidth()) {
                 items(lista) { est ->
@@ -57,6 +63,7 @@ fun Eliminar(
                             }
                             IconButton(onClick = {
                                 onEliminar(est)
+                                lista.remove(est)
                             }) {
                                 Icon(imageVector = Icons.Default.Delete, contentDescription = "Eliminar", tint = MaterialTheme.colorScheme.primary)
                             }
