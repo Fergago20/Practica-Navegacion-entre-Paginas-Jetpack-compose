@@ -16,7 +16,6 @@ import ni.edu.uam.practicanavegacionentrepginas.modelo.Estudiante
 @Composable
 fun Eliminar(
     claseActual: clase?,
-    version: Int,
     onEliminar: (Estudiante) -> Unit,
     onDone: () -> Unit
 ) {
@@ -24,7 +23,6 @@ fun Eliminar(
         Column(modifier = Modifier.padding(16.dp)) {
             Text("Eliminar Estudiantes", style = MaterialTheme.typography.titleLarge, color = MaterialTheme.colorScheme.primary)
             Spacer(modifier = Modifier.height(12.dp))
-            Text("Vista actualizada: $version", style = MaterialTheme.typography.bodySmall, color = MaterialTheme.colorScheme.onSurface)
             Spacer(modifier = Modifier.height(8.dp))
 
             if (claseActual == null) {

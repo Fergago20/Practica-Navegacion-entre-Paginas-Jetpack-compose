@@ -66,7 +66,6 @@ fun AppNavegacion() {
         composable("eliminar") {
             Eliminar(
                 claseActual = claseState.value,
-                version = version.value,
                 onEliminar = { estudiante ->
                     eliminarEstudiante(estudiante)
                 },

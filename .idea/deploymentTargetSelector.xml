@@ -4,10 +4,10 @@
     <selectionStates>
       <SelectionState runConfigName="app">
         <option name="selectionMode" value="DROPDOWN" />
-        <DropdownSelection timestamp="2026-04-28T02:54:56.350504500Z">
+        <DropdownSelection timestamp="2026-04-28T05:12:31.746703300Z">
           <Target type="DEFAULT_BOOT">
             <handle>
-              <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\ferga\.android\avd\Pixel_9_Pro.avd" />
+              <DeviceId pluginId="LocalEmulator" identifier="path=C:\Users\ferga\.android\avd\Android_Virtual_Device.avd" />
             </handle>
           </Target>
         </DropdownSelection>
